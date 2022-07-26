@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: lcc-config-server  # 应用名称
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/lichencai/KW #配置文件所在仓库
+          search-paths: test
+          username: '793385991@qq.com'
+          password: '159131lcc'
+          default-label: main
+server:
+  port: 6000

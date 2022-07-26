@@ -1,0 +1,21 @@
+server:
+  port: 3302
+
+management:
+  endpoint:
+    shutdown:
+      enabled: false
+
+endpoints:
+  web:
+    exposure:
+      include: "*"
+
+
+spring:
+  profiles:
+    active: prod
+  application:
+    name: lcc-config-server   # 这里的命名需要和git上面的配置文件一样
+  config:
+    import: optional:configserver:http://localhost:6000/
