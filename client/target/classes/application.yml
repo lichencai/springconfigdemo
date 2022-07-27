@@ -14,8 +14,8 @@ endpoints:
 
 spring:
   profiles:
-    active: prod
+    active: uat
   application:
     name: lcc-config-server   # 这里的命名需要和git上面的配置文件一样
   config:
-    import: optional:configserver:http://localhost:6000/
+    import: optional:configserver:http://localhost:6000
