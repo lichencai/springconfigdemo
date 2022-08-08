@@ -2,14 +2,30 @@ spring:
   application:
     name: lcc-config-server  # 应用名称
   cloud:
+    bus:
+      refresh:
+        enabled: true
+    stream:
+      kafka:
+        binder:
+          brokers: 192.168.202.128:9092
+          configuration:
+            group.id : configserver
     config:
       server:
         git:
-#          uri: https://github.com/lichencai/KW #配置文件所在仓库
           uri: https://gitee.com/lichencai/kv
+#          search-paths: test,client2,client1
           search-paths: test
           username: '793385991@qq.com'
           password: 'CvR7q@zA9Ukbmee'
           default-label: master
+
 server:
   port: 6000
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
