@@ -1,28 +1,28 @@
+server:
+  port: 6000
+
 spring:
+  rabbitmq:
+    host: 192.168.202.128
+    port: 5672
+    username: guest
+    password: guest
   application:
     name: lcc-config-server  # 应用名称
   cloud:
     bus:
       refresh:
         enabled: true
-    stream:
-      kafka:
-        binder:
-          brokers: 192.168.202.128:9092
-          configuration:
-            group.id : configserver
     config:
       server:
         git:
           uri: https://gitee.com/lichencai/kv
-#          search-paths: test,client2,client1
-          search-paths: test
+          search-paths:
+            - default
+            - client*
           username: '793385991@qq.com'
-          password: 'CvR7q@zA9Ukbmee'
+          password: ''
           default-label: master
-
-server:
-  port: 6000
 
 management:
   endpoints:

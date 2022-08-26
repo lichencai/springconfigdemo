@@ -20,11 +20,15 @@ public class GitConfig {
     @Value("${data.default}")
     private String defaultValue;
 
+    @Value("${data.local}")
+    private String dataLocal;
+
     @Override
     public String toString() {
         return "GitConfig{" +
                 "env='" + env + '\'' +
                 ", defaultValue='" + defaultValue + '\'' +
+                ", dataLocal='" + dataLocal + '\'' +
                 '}';
     }
 }
