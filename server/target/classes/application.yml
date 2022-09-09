@@ -2,11 +2,6 @@ server:
   port: 6000
 
 spring:
-  rabbitmq:
-    host: 192.168.202.128
-    port: 5672
-    username: guest
-    password: guest
   application:
     name: lcc-config-server  # 应用名称
   cloud:
@@ -16,13 +11,13 @@ spring:
     config:
       server:
         git:
-          uri: https://gitee.com/lichencai/kv
+          uri: http://10.2.35.11/origin-5g-safe/config.git
           search-paths:
             - default
             - client*
-          username: '793385991@qq.com'
-          password: 'CvR7q@zA9Ukbmee'
-          default-label: master
+          username: 'lichencai'
+          password: 'lichencai12#$Test'
+          default-label: main
 
 management:
   endpoints:

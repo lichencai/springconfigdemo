@@ -11,11 +11,6 @@ management:
         include: '*'
 
 spring:
-  rabbitmq:
-    host: 192.168.202.128
-    port: 5672
-    username: guest
-    password: guest
   profiles:
     active: uat # 名字以此作为环境区分
   application:
