@@ -8,28 +8,35 @@
         <groupId>lcc.test.config</groupId>
         <artifactId>gitconfig</artifactId>
         <version>1.0-SNAPSHOT</version>
+        <relativePath />
     </parent>
 
-    <artifactId>server</artifactId>
+    <groupId>lcc.test.config</groupId>
+    <artifactId>lcc-config-starter</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <name>server</name>
+    <name>lcc-config-starter</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
 
     <dependencies>
 
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+            <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-config-server</artifactId>
+            <artifactId>spring-cloud-starter-config</artifactId>
         </dependency>
+
     </dependencies>
 
     <build>

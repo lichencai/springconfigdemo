@@ -18,9 +18,3 @@ spring:
           username: 'lichencai'
           password: 'lichencai12#$Test'
           default-label: main
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: '*'
