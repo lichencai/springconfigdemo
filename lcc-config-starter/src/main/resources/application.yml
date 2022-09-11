@@ -1,0 +1,7 @@
+server:
+  port: 3303
+
+
+spring:
+  profiles:
+    active: prod # 名字以此作为环境区分

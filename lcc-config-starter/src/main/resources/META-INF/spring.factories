@@ -1,0 +1,2 @@
+org.springframework.boot.env.EnvironmentPostProcessor=lcc.config.starter.env.MyEnvironmentPostProcessor
+#org.springframework.cloud.bootstrap.BootstrapConfiguration=lcc.config.starter.config.MyConfiguration

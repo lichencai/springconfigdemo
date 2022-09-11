@@ -6,3 +6,5 @@ spring:
     active: uat # 名字以此作为环境区分
   application:
     name: client1   # 这里的命名需要和git上面的配置文件一样
+  config:
+    import: optional:configserver:http://localhost:6000

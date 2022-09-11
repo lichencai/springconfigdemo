@@ -11,10 +11,10 @@ spring:
     config:
       server:
         git:
-          uri: http://10.2.35.11/origin-5g-safe/config.git
+          uri: https://gitee.com/lichencai/kv
           search-paths:
-            - default
-            - client*
-          username: 'lichencai'
-          password: 'lichencai12#$Test'
-          default-label: main
+            - '*'
+          username: '793385991@qq.com'
+          password: 'CvR7q@zA9Ukbmee'
+          default-label: master
+          basedir: cache
