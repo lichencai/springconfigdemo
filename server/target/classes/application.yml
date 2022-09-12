@@ -13,8 +13,7 @@ spring:
         git:
           uri: https://gitee.com/lichencai/kv
           search-paths:
-            - default
-            - client*
+            - '*'
           username: '793385991@qq.com'
           password: 'CvR7q@zA9Ukbmee'
           default-label: master
