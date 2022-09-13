@@ -1,3 +1,0 @@
-my:
-  profile:
-    test: default  # 不指定spring.profiles.active 不会使用default的profile

@@ -1,5 +1,6 @@
 package lcc.config.starter.env;
 
+import cn.hutool.core.io.FileUtil;
 import org.springframework.beans.factory.config.YamlPropertiesFactoryBean;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.env.EnvironmentPostProcessor;
@@ -12,6 +13,8 @@ import org.springframework.core.env.PropertySource;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 public class MyEnvironmentPostProcessor implements EnvironmentPostProcessor, ApplicationListener<ApplicationEvent> {
@@ -21,23 +24,50 @@ public class MyEnvironmentPostProcessor implements EnvironmentPostProcessor, App
      * */
     private static final DeferredLog log = new DeferredLog();
 
+    private String cache = ".cache/";
+
     @Override
     public void postProcessEnvironment(ConfigurableEnvironment environment, SpringApplication application) {
-        log.info("读取到application.name:" + environment.getProperty("spring.application.name")
+        log.info("读取到system.id:" + environment.getProperty("system.id")
                         + " 和 profiles.active:" + environment.getProperty("spring.profiles.active"));
 
-        String name = environment.getProperty("spring.application.name");
+        String name = environment.getProperty("system.id");
         String active = environment.getProperty("spring.profiles.active");
+        try{
+            new LoadFromGitService().load(name, active);
+        }catch (Exception e){
+            log.error("加载远程配置文件失败,实行加载本地缓存配置", e);
+        }
 
-        new LoadFromGitService().load(name, active);
-
-        String[] profiles = {"remote-application-uat.yml", "env.properties"};
-        for (String profile : profiles) {
+        List<String> fileList = findLoadFile(name, active);
+        for (String filePath : fileList){
             //从classpath路径下面查找文件
-            Resource resource = new ClassPathResource(profile);
+            Resource resource = new ClassPathResource(filePath);
             //加载成PropertySource对象，并添加到Environment环境中
             environment.getPropertySources().addFirst(loadProfiles(resource));      // 先加载先有效
         }
+    }
+
+    private List<String> findLoadFile(String systemId, String active){
+        List<String> fileList = new ArrayList<>();
+        String filePath1 = cache + systemId + ".yml";
+        if(FileUtil.exist(filePath1)){
+            fileList.add(filePath1);
+        }
+        String filePath = cache + systemId + ".properties";
+        if(FileUtil.exist(filePath)){
+            fileList.add(filePath);
+        }
+        String filePath3 = cache + systemId + "-" + active + ".yml";
+        if(FileUtil.exist(filePath3)){
+            fileList.add(filePath3);
+        }
+        String filePath2 = cache + systemId + "-" + active + ".properties";
+        if(FileUtil.exist(filePath2)){
+            fileList.add(filePath2);
+        }
+
+        return fileList;
     }
 
     //加载单个配置文件

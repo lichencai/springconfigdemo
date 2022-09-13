@@ -9,10 +9,10 @@ import org.springframework.context.annotation.Configuration;
 public class MyConfigurationVo {
 
 
-    @Value("${my.env.test}")
-    private String myEnvTest;   // 如果跟application-uat配置相同则会进行覆盖
+    @Value("${syncApiAddress}")
+    private String syncApiAddress;   // 如果跟application-uat配置相同则会进行覆盖
 
 
-    @Value("${my.env.profile}")
+    @Value("${spring.kafka.consumer.properties.group.id}")
     private String myEnvProfile;
 }

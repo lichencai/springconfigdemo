@@ -1,4 +1,0 @@
-my:
-  env:
-    test: uat
-    profile: uat

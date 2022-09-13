@@ -1,5 +1,7 @@
 server:
   port: 6000
+  servlet:
+    context-path: /myenv
 
 spring:
   application:
@@ -10,11 +12,12 @@ spring:
         enabled: true
     config:
       server:
+        prefix: /env
         git:
-          uri: https://gitee.com/lichencai/kv
+          uri: http://10.2.35.11/origin-5g-safe/config.git
           search-paths:
             - '*'
-          username: '793385991@qq.com'
-          password: 'CvR7q@zA9Ukbmee'
-          default-label: master
+          username: 'lichencai'
+          password: 'lichencai12#$Test'
+          default-label: main
           basedir: cache
